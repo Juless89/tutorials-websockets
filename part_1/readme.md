@@ -1,4 +1,4 @@
-<center>![banner.png](https://steemitimages.com/640x0/https://res.cloudinary.com/hpiynhbhq/image/upload/v1515886103/kmzfcpvtzuwhvqhgpyjp.png)</center>
+![banner.png](https://steemitimages.com/640x0/https://res.cloudinary.com/hpiynhbhq/image/upload/v1515886103/kmzfcpvtzuwhvqhgpyjp.png)
 
 ---
 
@@ -37,10 +37,11 @@ Download the files from Github and install the virtual environment
 
 ```
 $ cd ~/
-$ git clone https://github.com/Juless89/steem_api_verification.git
-$ cd steem_api_verification
+$ git clone https://github.com/Juless89/tutorials-websockets
+$ cd tutorials-websockets
 $ pipenv install
 $ pipenv shell
+$ cd part_1
 ```
 
 #### Basics of websockets
@@ -82,6 +83,7 @@ if __name__ == "__main__":
 
 This tutorial will look to connecting to two different exchanges via websockets and get a live data feed of the STEEM orderbook. The exchanges are Binance and Huobi and both use a different technique to subscribe to different data feeds. Always read the documentation provided by the websocket service provider.
 
+![Screenshot 2019-03-27 13.02.40.png](https://cdn.steemitimages.com/DQmTaLE7aJWvRcAFuydAA7fYidVkA7vFAqtWGhTwyVg3Fwz/Screenshot%202019-03-27%2013.02.40.png)
 
 [Binance documentation](https://github.com/binance-exchange/binance-official-api-docs/blob/master/web-socket-streams.md)
 
@@ -99,6 +101,12 @@ Stream Name: <symbol>@depth<levels>
 ```
 
 Connecting to the steembtc partial book depth for 20 levels is then achieved by connecting to the url: `wss://stream.binance.com:9443/ws/steembtc@depth20`.
+
+![binance.gif](https://cdn.steemitimages.com/DQmc9zkPw99vE6ML3HzbMprTCzpMRMh13M6mkoqU15XQWfC/binance.gif)
+
+---
+
+![Screenshot 2019-03-27 13.03.01.png](https://cdn.steemitimages.com/DQmbFKJdLrzNKAvaoZbhWaaaA6Sr1xt3PxeRVkXKwMyyTDa/Screenshot%202019-03-27%2013.03.01.png)
 
 [Huobi documentation](https://github.com/huobiapi/API_Docs_en/wiki/Huobi-API)
 
@@ -134,6 +142,8 @@ def on_open(ws):
 Will return the following reply on success:
 ```
 {'id': 'id1', 'status': 'ok', 'subbed': 'market.steembtc.depth.step0', 'ts': 1553688645071}
+
+![huobi.gif](https://cdn.steemitimages.com/DQmdC1aBRzoxsiX4oJq5m1dKo3kf5NskaNWhyuG7axbqpuq/huobi.gif)
 ```
 
 
@@ -243,9 +253,13 @@ def on_message(self, message):
 #### Running the code
 
 
+`python binance.py`
+![binance2.gif](https://cdn.steemitimages.com/DQmZjdYqJoarQHSqLGwGU3WJssp1HWV7ps9z2D5ryTUC9QN/binance2.gif)
 
+`python huobi.py`
+![huobi2.gif](https://cdn.steemitimages.com/DQmRDPoQxN9jCPfDT4jrK5qceHs3FXk3Sut5PDBXCMiS2C5/huobi2.gif)
 ---
 
-The code for this tutorial can be found on [Github](https://github.com/Juless89/steem_api_verification.git)!
+The code for this tutorial can be found on [Github](https://github.com/Juless89/tutorials-websockets)!
 
 This tutorial was written by @juliank.
