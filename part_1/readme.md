@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
 #### Subscribing to data feeds
 
-This tutorial will look to connecting to two different exchanges via websockets and get a live data feed of the STEEM orderbook. The exchanges are Binance and Huobi and both use a different technique to subscribe to different data feeds. Always read the documentation provided by the websocket service provider.
+This tutorial will look at connecting to two different exchanges via websockets and get a live data feed of the STEEM orderbook. The exchanges are Binance and Huobi and both use a different technique to subscribe to different data feeds. Always read the documentation provided by the websocket service provider.
 
 ![Screenshot 2019-03-27 13.02.40.png](https://cdn.steemitimages.com/DQmTaLE7aJWvRcAFuydAA7fYidVkA7vFAqtWGhTwyVg3Fwz/Screenshot%202019-03-27%2013.02.40.png)
 
