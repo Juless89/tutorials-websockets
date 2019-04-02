@@ -9,9 +9,12 @@ import time
 # print top bid/ask for each exchange
 # run forever
 def run(orderbooks, lock):
+    # local last_update
+    current_time = datetime.now()
+
     while True:
-        current_time = datetime.now()
         try:
+            # check for new update
             if orderbooks['last_update'] != current_time:
                 with lock:
                     # extract and print data
@@ -21,6 +24,8 @@ def run(orderbooks, lock):
                             ask = value['asks'][0][0]
                             print(f"{key} bid: {bid} ask: {ask}")
                     print()
+
+                    # set local last_update to last_update
                     current_time = orderbooks['last_update']
             time.sleep(0.1)
         except Exception:

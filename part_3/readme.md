@@ -218,21 +218,23 @@ def run(orderbooks, lock):
 A different approach would be keep track on when the orderbooks were last updated and only accessing the data if that is the case. This can be achieved by adding a `last_update` variable to the shared dict and then comparing this to a local `last_update` in the main thread.
 
 ```
-
-    orderbooks = {
-        "Binance": {},
-        "Huobi": {},
-        "last_update": None,  # new
-    }
+orderbooks = {
+    "Binance": {},
+    "Huobi": {},
+    "last_update": None,  # new
+}
 
 def run(orderbooks, lock):
     while True:
+        # local last_update
         current_time = datetime.now()
         try:
+            # check for new update
             if orderbooks['last_update'] != current_time:
                 with lock:
                     # do stuff
    
+                    # set local last_update to last_update
                     current_time = orderbooks['last_update']
             time.sleep(0.1)
         except Exception:
