@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from binance import Binance
 from huobi import Huobi
 from upbit import Upbit
@@ -22,10 +24,10 @@ def calculate_price_delta(orderbooks, ex1, ex2):
     ask1 = float(orderbooks[ex1]['asks'][0][0])
     ask2 = float(orderbooks[ex2]['asks'][0][0])
 
-    bid_ask = delta(bid1, ask2)
-    ask_bid = delta(ask1, bid2)
+    bid = delta(bid1, bid2)
+    ask = delta(ask1, ask2)
 
-    print(ex1, ex2, f'BID/ASK: {bid_ask:.2f}% ASK/BID: {ask_bid:.2f}%')
+    print(f'{ex1}-{ex2}\tBID Δ: {bid:.2f}% ASK Δ: {ask:.2f}%')
 
 # return subsets of size 2 of all exchanges
 def exchange_sets(orderbooks):
@@ -36,6 +38,7 @@ def exchange_sets(orderbooks):
         if exchange != 'last_update':
             exchanges.append(exchange)
 
+    # return all subsets
     return list(combinations(exchanges, 2))
 
 # print top bid/ask for each exchange
@@ -44,6 +47,7 @@ def run(orderbooks, lock):
     # local last_update
     current_time = datetime.now()
 
+    # exchange subsets
     sets = exchange_sets(orderbooks)
 
     while True:
